@@ -24,7 +24,7 @@
 | Apellido | Nombre | Usuario Uniandes | Usuario Github |
 |----------|----------|----------|----------|
 | Pardo Morales    | Santiago Iván  | s.pardom   | santyxd3000   |
-| Reyes Ramírez    | Daniel Felipe  | df.reyes | --   |
+| Reyes Ramírez    | Daniel Felipe  | df.reyes | dfreyesr   |
 | --    | --   | --  | ---  |
 
 # Enlaces
