@@ -1,4 +1,4 @@
-**Lanzamiento Ciclo 1**
+# Lanzamiento Ciclo 1
 
 *Lider: aún a decidir*
 
