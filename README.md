@@ -25,7 +25,7 @@
 |----------|----------|----------|----------|
 | Pardo Morales    | Santiago Iván  | s.pardom   | santyxd3000   |
 | Reyes Ramírez    | Daniel Felipe  | df.reyes | dfreyesr   |
-| --    | --   | --  | ---  |
+| Cárdenas Ramírez    | Christhian Camilo   | cc.cardenas  | cccardenas  |
 
 # Enlaces
 - [Jenkins](http://157.253.238.75:8080/jenkins-isis2603/)
