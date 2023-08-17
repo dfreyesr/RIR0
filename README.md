@@ -27,6 +27,28 @@
 | Reyes Ramírez    | Daniel Felipe  | df.reyes | dfreyesr   |
 | Cárdenas Ramírez    | Christhian Camilo   | cc.cardenas  | cccardenas  |
 
+*Historias de Usuario*
+
+| ID | Nombre | Resumen | Detalle | Revisa |
+|----------|----------|----------|----------| ----------|
+| HU_01 | . | . | . | . |
+| HU_02 | . | . | . | . |
+| HU_03 | . | . | . | . |
+| HU_04 | . | . | . | . |
+| HU_05 | . | . | . | . |
+| HU_06 | . | . | . | . |
+
+Descripción Historias de Usuario
+
+|Elemento|Descripción|
+|----------|----------|
+|.|.|
+|.|.|
+|.|.|
+|.|.|
+|.|.|
+|.|.|
+
 # Enlaces
 - [Jenkins](http://157.253.238.75:8080/jenkins-isis2603/)
 - [Sonar](http://157.253.238.75:8080/sonar-isis2603/)
