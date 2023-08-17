@@ -43,11 +43,17 @@ Descripción Historias de Usuario
 |Elemento|Descripción|
 |----------|----------|
 |.|.|
+|Criterios de aceptación|.|
 |.|.|
+|Criterios de aceptación|.|
 |.|.|
+|Criterios de aceptación|.|
 |.|.|
+|Criterios de aceptación|.|
 |.|.|
+|Criterios de aceptación|.|
 |.|.|
+|Criterios de aceptación|.|
 
 # Enlaces
 - [Jenkins](http://157.253.238.75:8080/jenkins-isis2603/)
