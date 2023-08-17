@@ -1,6 +1,6 @@
 # Lanzamiento Ciclo 1
 
-*Lider: aún a decidir*
+*Lider:* Santiago Pardo
 
 *Reglas de funcionamiento*
 
