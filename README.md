@@ -28,7 +28,8 @@
 | Cárdenas Ramírez    | Christhian Camilo   | cc.cardenas  | cccardenas  |
 
 *Observaciones*
- * Buen trabajo con las reglas de funcionamiento. Falta agregar las presentaciones con las propuestas individuales de cada integrante. 
+ * Buen trabajo con las reglas de funcionamiento. Falta agregar las presentaciones con las propuestas individuales de cada integrante.
+ * Agregar esta información semana por semana a la wiki asignada  
 
 *Historias de Usuario*
 
