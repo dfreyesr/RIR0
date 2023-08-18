@@ -27,6 +27,9 @@
 | Reyes Ramírez    | Daniel Felipe  | df.reyes | dfreyesr   |
 | Cárdenas Ramírez    | Christhian Camilo   | cc.cardenas  | cccardenas  |
 
+*Observaciones*
+ * Buen trabajo con las reglas de funcionamiento. Falta agregar las presentaciones con las propuestas individuales de cada integrante. 
+
 *Historias de Usuario*
 
 | ID | Nombre | Resumen | Detalle | Revisa |
