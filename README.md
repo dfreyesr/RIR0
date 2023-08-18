@@ -29,7 +29,7 @@
 
 *Observaciones*
  * Buen trabajo con las reglas de funcionamiento. Falta agregar las presentaciones con las propuestas individuales de cada integrante.
- * Agregar esta información semana por semana a la wiki asignada  
+ * Agregar esta información semana por semana a la wiki asignada, y no en el README.md
 
 *Historias de Usuario*
 
