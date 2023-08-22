@@ -37,10 +37,10 @@
 |----------|----------|----------|----------| ----------|
 | HU_01 | Daniel Reyes | Entrenador crea un equipo | **Como** entrenador de un grupo de deportistas,
 **Quiero** tener la capacidad de seleccionar deportistas específicos desde la aplicación web,
-**Para** poder crear un equipo personalizado y asignarles rutinas de entrenamiento adaptadas a sus necesidades individuales.| Santiago Pardo |
+**Para** poder crear un equipo personalizado y asignarles rutinas de entrenamiento adaptadas a sus necesidades individuales | Santiago Pardo |
 | HU_02 | Daniel Reyes | Deportista añade métricas | **Como** deportista,
 **Quiero** tener acceso a la aplicación web durante mis sesiones de entrenamiento, con información sobre los ejercicios disponibles y una interfaz de usuario intuitiva,
-**Para** poder registrar mis métricas y datos relevantes mientras realizo el entrenamiento. | Christian Cardenas |
+**Para** poder registrar mis métricas y datos relevantes mientras realizo el entrenamiento | Christian Cardenas |
 | HU_03 | Santiago Pardo | Deportista visualiza métricas | **Como** deportista que ha ingresado métricas previas,
 **Quiero** acceder a una sección especializada en la aplicación web que muestre visualizaciones de mis métricas,
 **Para** poder obtener una representación visual de cómo ha evolucionado mi rendimiento a lo largo del tiempo. | Daniel Reyes |
