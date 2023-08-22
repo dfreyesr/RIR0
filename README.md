@@ -31,7 +31,7 @@
  * Buen trabajo con las reglas de funcionamiento. Falta agregar las presentaciones con las propuestas individuales de cada integrante.
  * Agregar esta información semana por semana a la wiki asignada, y no en el README.md
 
-*Historias de Usuario*
+<h2>Historias de Usuario</h2>
 
 | ID | Detalla | Nombre | Resumen | Revisa |
 |----------|----------|----------|----------| ----------|
@@ -42,9 +42,7 @@
 | HU_05 | Christian Cardenas | Asignación de Rutinas Personalizadas | **Como** entrenador con un grupo de deportistas en la aplicación web, **Quiero** tener la habilidad de asignar rutinas especializadas a cada deportista o a grupos de deportistas, **Para** poder asegurarme de que los deportistas están siguiendo las rutinas específicas que les he asignado. | Daniel Reyes |
 | HU_06 | Christian Cardenas | Compartir Progreso en el Feed | **Como** deportista que ha ingresado métricas previas, **Quiero** tener la opción de compartir mis métricas y mi progreso en el feed de la aplicación web, **Para** poder permitir que otros deportistas y entrenadores vean mi avance y progreso.  | Santiago Pardo |
 
-Descripción Historias de Usuario
-</br>
-</br>
+<h3>Descripción Historias de Usuario</h3>
 
 |Elemento|Descripción|
 |----------|----------|
