@@ -10,7 +10,7 @@ import { useState,useEffect } from 'react';
 import Image from './components/image';
 import Checkbox from './components/checkbox';
 
-function App() {
+function Components() {
 
   const [name, setName] = useState("");
 
@@ -38,8 +38,8 @@ function App() {
 
   
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="Components">
+      <header className="Components-header">
         <Button text="Theme 1" onClick={test} theme="primary" />
         <Button text="Theme 2" onClick={test} theme="secondary" />
         <Button text="Theme 3" onClick={test} theme="no-background" />
@@ -63,4 +63,4 @@ function App() {
   );
 }
 
-export default App;
+export default Components;

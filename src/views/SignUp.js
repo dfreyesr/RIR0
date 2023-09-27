@@ -7,6 +7,7 @@ import Checkbox from "../components/checkbox";
 import Button from "../components/button";
 import favicon from "./static/favicon.ico";
 import banner from "./static/banner.png";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [termsChecked, setTermsChecked] = useState(false);
@@ -28,6 +29,13 @@ function SignUp() {
     terms: true,
   });
 
+  const navigate = useNavigate();
+
+
+  const navigateToLogIn = () => {
+    navigate('/log-in');
+  };
+
   useEffect(() => {
     setFormValues({ ...formValues, isTrainer: trainerChecked });
   }, [trainerChecked]);
@@ -42,10 +50,6 @@ function SignUp() {
 
   const handleEmailChange = (e) => {
     setFormValues({ ...formValues, email: e.target.value });
-  };
-
-  const handleTrainerCheckbox = () => {
-    setFormValues({ ...formValues, isTrainer: trainerChecked });
   };
 
   const handlePasswordChange = (e) => {
@@ -86,7 +90,7 @@ function SignUp() {
   }
 
   return (
-    <div className="default-container">
+    <div className="default-container-signup">
       <img className="logo" src={favicon} alt="logo"></img>
       <div className="app">
         <form>
@@ -134,7 +138,7 @@ function SignUp() {
           <Button text="Get started" onClick={validateForm} theme="primary" />
           <span className="text--caption">
             Already have an account?{" "}
-            <a className="text--caption" href="google.com">
+            <a className="text--caption" onClick={navigateToLogIn}>
               Log in
             </a>
           </span>

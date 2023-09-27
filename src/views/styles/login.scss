@@ -1,6 +1,8 @@
 @import "./global.scss/";
 
-.default-container-signup {
+$breakpoint-mobile-max: 768px;
+
+.default-container-login {
   background-color: $background;
   min-height: 100vh;
   min-width: 100vw;
@@ -9,6 +11,8 @@
   justify-content: center;
   position: relative;
   color: white;
+
+
 
   .banner {
     @media (max-width: $breakpoint-mobile-max) {
@@ -46,7 +50,7 @@
       gap: 1rem;
       padding: 0 16px;
       justify-content: center;
-      align-items: start;
+      align-items: center;
 
       @media (max-width: $breakpoint-mobile-max) {
         width: 100%;

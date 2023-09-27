@@ -13,6 +13,18 @@
   }
 }
 
+.button-landing-size{
+  height: 2.5rem;
+  font-size: 1rem;
+
+  @media (max-width: 768px) {
+    width: 7.5rem;
+  }
+  @media (min-width: 768px) {
+    width: 8.75rem;
+  }
+}
+
 .button-image-size{
   height: 2rem;
   font-size: 0.8rem;
@@ -78,4 +90,28 @@
       filter: brightness(85%);
     }
   }
+
+  &--primary-landing {
+    @extend .button-landing-size;
+    background: $main-color;
+    color: $background;
+
+    &:hover {
+      cursor: pointer;
+      filter: brightness(85%);
+    }
+  }
+
+  &--secondary-landing {
+    @extend .button-landing-size;
+    background: $gray-color;
+    color: $main-color;
+
+    &:hover {
+      cursor: pointer;
+      filter: brightness(85%);
+    }
+  }
+
+  
 }

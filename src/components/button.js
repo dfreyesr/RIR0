@@ -16,7 +16,7 @@ const Button = ({ text, onClick, theme }) => {
 Button.propTypes = {
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  theme: PropTypes.oneOf(['primary', 'secondary', 'no-background','add-image'])
+  theme: PropTypes.oneOf(['primary', 'secondary', 'no-background','add-image','primary-landing','secondary-landing'])
 }
 
 Button.defaultProps = {
