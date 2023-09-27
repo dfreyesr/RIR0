@@ -1,0 +1,81 @@
+@import "global.scss";
+
+.button-standard-size{
+  height: 2.5rem;
+  font-size: 1rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+  @media (min-width: 768px) {
+    min-width: 17.75rem;
+    width: 20.125rem;
+  }
+}
+
+.button-image-size{
+  height: 2rem;
+  font-size: 0.8rem;
+
+  @media (max-width: 768px) {
+    width: 8.25rem;
+  }
+
+  @media (min-width: 768px) {
+    width: 13.5rem;
+  }
+}
+
+.button {
+  border: none;
+  border-radius: 23px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  &--primary {
+    @extend .button-standard-size;
+    background: $main-color;
+    color: $background;
+
+    &:hover {
+      cursor: pointer;
+      filter: brightness(85%);
+    }
+  }
+
+  &--secondary {
+    @extend .button-standard-size;
+    background: $gray-color;
+    color: $main-color;
+
+    &:hover {
+      cursor: pointer;
+      filter: brightness(85%);
+    }
+  }
+
+  &--no-background {
+    @extend .button-standard-size;
+    background: transparent;
+    color: white;
+
+    &:hover {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &--add-image {
+    @extend .button-image-size;
+    background: $gray-color;
+    color: $main-color;
+
+    &:hover {
+      cursor: pointer;
+      filter: brightness(85%);
+    }
+  }
+}

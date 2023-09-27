@@ -1,12 +1,4 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
+@import './components/styles/global.scss';
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -14,7 +6,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: $background;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

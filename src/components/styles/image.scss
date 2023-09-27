@@ -1,0 +1,43 @@
+@import './global.scss';
+
+.image-style{
+    @media (max-width: 768px) {
+        width: 80%;
+      }
+      @media (min-width: 768px) {
+        min-width: 17.75rem;
+        width: 20.125rem;
+      }
+    height: 12.56rem;
+    border-radius: 5px;
+
+}
+
+.image-container{
+    @extend .image-style;
+    background-color: $dark-gray-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    
+    & > img {
+        width: 100%;
+        overflow: hidden;
+        object-fit: cover; 
+        filter: grayscale(50%); 
+    }
+
+    & > .material-symbols-rounded {
+        font-size: 3.25rem;
+        color: $gray-color;
+    }
+
+    & > .button-holder {
+        width: 8.25rem;
+        height: 2rem;
+        display: block;
+        background-color: black;
+    }
+}

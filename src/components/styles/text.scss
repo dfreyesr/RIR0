@@ -1,0 +1,84 @@
+@import "global.scss";
+
+@mixin common-text-styles($font-size, $font-weight, $text-align: left) {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  line-height: normal;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  text-align: $text-align; // Add text-align property
+}
+
+.text {
+  color: white;
+
+  &--caption {
+    @include common-text-styles(0.8rem, 400);
+
+    &.bold {
+      font-weight: 700;
+    }
+
+    &.center {
+      text-align: center;
+    }
+  }
+
+  &--caption-error {
+    @include common-text-styles(0.8rem, 400);
+    color: red;
+  }
+
+  &--caption-light-gray {
+    @include common-text-styles(0.8rem, 400);
+    color: $light-gray-color;
+  }
+
+  &--body {
+    @include common-text-styles(1rem, 400);
+
+    &.bold {
+      font-weight: 700;
+    }
+
+    &.center {
+      text-align: center;
+    }
+  }
+
+  &--subheading {
+    @include common-text-styles(1.25rem, 400);
+
+    &.bold {
+      font-weight: 700;
+    }
+
+    &.center {
+      text-align: center;
+    }
+  }
+
+  &--heading {
+    @include common-text-styles(1.563rem, 400);
+
+    &.bold {
+      font-weight: 700;
+    }
+
+    &.center {
+      text-align: center;
+    }
+  }
+
+  &--title {
+    @include common-text-styles(2rem, 400);
+
+    &.bold {
+      font-weight: 700;
+    }
+
+    &.center {
+      text-align: center;
+    }
+  }
+}

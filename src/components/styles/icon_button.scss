@@ -1,0 +1,78 @@
+@import './global.scss';
+
+.iconbutton {
+  border: none;
+  border-radius: 100%;
+  margin: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  
+  &--add {
+    background: $main-color;
+    color: $background;
+
+    &:hover {
+      cursor: pointer;  
+      filter: brightness(85%);  
+  }
+  }
+
+  &--arrow-right {
+    background: $main-color;
+    color: $background;
+
+    &:hover {
+      cursor: pointer;  
+      filter: brightness(85%);  
+  }
+  }
+
+  &--arrow-right-small {
+    background: $main-color;
+    color: $background;
+    height: 1.25rem;
+    width: 1.25rem;
+    padding: 0;
+
+    &> .material-symbols-rounded {
+      font-size: 20px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &--edit {
+    background: transparent;
+    color: white;
+    color: $main-color;
+
+    &:hover {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+  }
+
+  &--delete {
+    background: transparent;
+    color: white;
+    color: $main-color;
+
+    &:hover {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+  }
+}
+
+.iconbutton > .material-symbols-rounded {
+  text-align: center;
+  width: 100%;
+}
