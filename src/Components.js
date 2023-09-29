@@ -9,6 +9,7 @@ import Input from './components/input';
 import { useState,useEffect } from 'react';
 import Image from './components/image';
 import Checkbox from './components/checkbox';
+import Menu from './components/menu';
 
 function Components() {
 
@@ -34,6 +35,12 @@ function Components() {
     alert(name);
   }
 
+  function printMenu(menuItem){
+    console.log(menuItem);
+  }
+
+  
+
   const [checked, setChecked] = useState(true);
 
   
@@ -58,6 +65,7 @@ function Components() {
         <Image src={todisplay.image} alt="prueba"/>
         <Image/>
         <Checkbox label="Estoy de acuerdo" isChecked={checked} setChecked={setChecked}/>
+        <Menu active="profile" onClick={printMenu} />
       </header>
     </div>
   );

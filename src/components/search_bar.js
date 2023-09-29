@@ -3,7 +3,7 @@ import "./styles/search_bar.scss";
 const SearchBar = ({ onSearch }) => {
   return (
     <div className="searchbar-inputwrapper">
-    <span class="material-symbols-rounded">search</span>
+    <span className="material-symbols-rounded">search</span>
       <input
         className="searchbar"
         type="text"

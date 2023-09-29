@@ -7,7 +7,7 @@ const Image = ({ src, alt, onAdd }) => {
     <div className="image-container">
       {!src && !alt ? (
         <>
-          <span class="material-symbols-rounded">image</span>
+          <span className="material-symbols-rounded">image</span>
           <Button text="Add image" theme="add-image" onClick={onAdd}/>
         </>
       ) : (

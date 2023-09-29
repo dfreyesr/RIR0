@@ -1,4 +1,4 @@
-@import './global.scss';
+@import "./global.scss";
 
 .iconbutton {
   border: none;
@@ -10,15 +10,15 @@
   display: flex;
   align-items: center;
   justify-items: center;
-  
+
   &--add {
     background: $main-color;
     color: $background;
 
     &:hover {
-      cursor: pointer;  
-      filter: brightness(85%);  
-  }
+      cursor: pointer;
+      filter: brightness(85%);
+    }
   }
 
   &--arrow-right {
@@ -26,9 +26,9 @@
     color: $background;
 
     &:hover {
-      cursor: pointer;  
-      filter: brightness(85%);  
-  }
+      cursor: pointer;
+      filter: brightness(85%);
+    }
   }
 
   &--arrow-right-small {
@@ -38,7 +38,7 @@
     width: 1.25rem;
     padding: 0;
 
-    &> .material-symbols-rounded {
+    & > .material-symbols-rounded {
       font-size: 20px;
     }
 
@@ -56,7 +56,6 @@
       cursor: pointer;
       background: rgba(255, 255, 255, 0.1);
     }
-
   }
 
   &--delete {
@@ -68,7 +67,32 @@
       cursor: pointer;
       background: rgba(255, 255, 255, 0.1);
     }
+  }
+  &--menu {
+    background: transparent;
+    color: white;
+    color: $main-color;
+    height: 2.5rem;
+    width: 2.5rem;
+    padding: 0;
 
+    &:hover {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+  &--close {
+    background: transparent;
+    color: white;
+    color: $main-color;
+    height: 2.5rem;
+    width: 2.5rem;
+    padding: 0;
+
+    &:hover {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+    }
   }
 }
 
