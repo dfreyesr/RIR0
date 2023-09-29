@@ -86,7 +86,7 @@ function SignUp() {
   }
 
   function sendForm() {
-    alert(JSON.stringify(formValues));
+    navigate('/log-in');
   }
 
   return (

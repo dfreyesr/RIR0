@@ -1,0 +1,83 @@
+@import "./global.scss";
+
+.metric-input {
+  @media (max-width: $breakpoint-mobile-max) {
+    width: 90%;
+    flex-wrap: wrap;
+    & > :first-child {
+      flex-grow: 1;
+      flex-shrink: 2;
+    }
+    & > :nth-child(2) {
+      flex-grow: 3;
+      flex-shrink: 0;
+    }
+    & > :nth-child(3) {
+      flex-grow: 3;
+      flex-shrink: 0;
+    }
+    & > :last-child {
+      flex-grow: 1;
+      max-width: 48px;
+    }
+  }
+
+  @media (min-width: $breakpoint-mobile-max) {
+    width: 25rem;
+    flex-wrap: wrap;
+    & > :first-child {
+      flex-grow: 1;
+      flex-shrink: 2;
+    }
+    & > :nth-child(2) {
+      flex-grow: 3;
+      flex-shrink: 0;
+    }
+    & > :nth-child(3) {
+      flex-grow: 3;
+      flex-shrink: 0;
+    }
+    & > :last-child {
+      flex-grow: 1;
+      max-width: 48px;
+    }
+  }
+
+  height: auto;
+  background-color: $dark-gray-color;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metric-input-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+  flex: 1;
+  min-width: 60px;
+
+  & > input {
+    flex: 1;
+    flex-shrink: 1;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: 0;
+    width: auto;
+    min-width: 20px;
+  }
+}
+
+.metric-input-item > input:focus {
+  border: none;
+  background-color: none;
+  outline: none;
+}

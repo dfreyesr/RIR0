@@ -54,7 +54,7 @@ function LogIn() {
   }
 
   function sendForm() {
-    alert(JSON.stringify(formValues));
+    navigate('/home');
   }
 
   return (
@@ -76,7 +76,7 @@ function LogIn() {
             setInputValue={handlePasswordChange}
             placeholder="Password"
             type="password"
-            errorlabel="Insert a password with 9 characters or more"
+            errorlabel="Incorrect password"
             validity={formValidity.password}
           />
           <Button text="Login" onClick={validateForm} theme="primary" />

@@ -10,6 +10,7 @@ import { useState,useEffect } from 'react';
 import Image from './components/image';
 import Checkbox from './components/checkbox';
 import Menu from './components/menu';
+import MetricInput from './components/metric_input';
 
 function Components() {
 
@@ -66,6 +67,7 @@ function Components() {
         <Image/>
         <Checkbox label="Estoy de acuerdo" isChecked={checked} setChecked={setChecked}/>
         <Menu active="profile" onClick={printMenu} />
+        <MetricInput set="1" weight="30" reps="12"/>
       </header>
     </div>
   );
