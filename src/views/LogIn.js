@@ -54,7 +54,7 @@ function LogIn() {
   }
 
   function sendForm() {
-    navigate('/home');
+    navigate('/tracker');
   }
 
   return (

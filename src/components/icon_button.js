@@ -8,11 +8,15 @@ const IconButton = ({ onClick, theme }) => {
         return "add";
       case "edit":
         return "edit";
+      case "arrow-left":
+        return "chevron_left";
       case "arrow-right":
         return "chevron_right";
       case "arrow-right-small":
         return "chevron_right";
       case "delete":
+        return "delete";
+      case "delete-white":
         return "delete";
       case "menu":
         return "menu";

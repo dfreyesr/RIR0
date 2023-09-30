@@ -29,11 +29,11 @@
     border: 1px solid $error;
 
     & > .input {
-      color: red;
+      color: $error;
     }
 
     & > .Text {
-      color: red;
+      color: $error;
     }
   }
 }
@@ -55,12 +55,10 @@
   outline: none;
 }
 
-.label.error {
-  color: red !important;
-}
+
 
 .Text {
   margin-left: 10px;
   display: inline;
-  background-color: red;
+  background-color: $error;
 }

@@ -44,6 +44,16 @@ function Components() {
 
   const [checked, setChecked] = useState(true);
 
+  const [metrics, setMetrics] = useState({
+    set:"1",
+    weight:"",
+    reps:"",
+  })
+
+  useEffect(() => {
+    console.log(metrics);
+  }, [metrics])
+  
   
   return (
     <div className="Components">
@@ -55,7 +65,7 @@ function Components() {
         <IconButton onClick={test} theme="edit"/>
         <IconButton onClick={test} theme="arrow-right"/>
         <IconButton onClick={test} theme="delete"/>
-        <Text text="Como estas" variant="heading--bold" />
+        <Text text="Como estas" variant="heading bold" />
         <SearchBar onSearch={test}/>
         <Card onClick={test} toDisplay={todisplay}/>
         <Input setInputValue={setName} placeholder="Full Name" type="text" label='Enter here your name' labelHidden="false"/>
@@ -67,7 +77,7 @@ function Components() {
         <Image/>
         <Checkbox label="Estoy de acuerdo" isChecked={checked} setChecked={setChecked}/>
         <Menu active="profile" onClick={printMenu} />
-        <MetricInput set="1" weight="30" reps="12"/>
+        <MetricInput metrics={metrics} setMetrics={setMetrics}/>
       </header>
     </div>
   );

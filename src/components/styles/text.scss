@@ -13,6 +13,7 @@
   color: white;
 
   &--landing {
+    color: white;
     line-height: normal;
     text-align: center;
 
@@ -59,6 +60,7 @@
   }
 
   &--caption {
+    color: white;
     @include common-text-styles(0.8rem, 400);
 
     &.bold {
@@ -72,7 +74,7 @@
 
   &--caption-error {
     @include common-text-styles(0.8rem, 400);
-    color: red;
+    color: #eb5050;
   }
 
   &--caption-light-gray {
@@ -81,6 +83,7 @@
   }
 
   &--body {
+    color: white;
     @include common-text-styles(1rem, 400);
 
     &.bold {
@@ -93,6 +96,7 @@
   }
 
   &--subheading {
+    color: white;
     @include common-text-styles(1.25rem, 400);
 
     &.bold {
@@ -105,9 +109,11 @@
   }
 
   &--heading {
+    color: white;
     @include common-text-styles(1.563rem, 400);
 
     &.bold {
+      
       font-weight: 700;
     }
 
@@ -117,6 +123,7 @@
   }
 
   &--title {
+    color: white;
     @include common-text-styles(2rem, 400);
 
     &.bold {

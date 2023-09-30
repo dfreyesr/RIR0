@@ -6,7 +6,9 @@
   flex-direction: row;
   align-items: flex-start;
   height: 6.5rem;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  padding-right: 0.5rem;
+  box-sizing: border-box;
   align-items: center;
   background-color: $dark-gray-color;
   border-radius: 12px;
@@ -19,7 +21,7 @@
   }
 
   @media (max-width: 768px) {
-    width: 80%;
+    width: 100%;
   }
 
   @media (min-width: 768px) {

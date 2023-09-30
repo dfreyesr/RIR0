@@ -20,6 +20,7 @@
 
   & > .material-symbols-rounded {
     margin-left: 24px;
+    color: $light-gray-color;
   }
 }
 
@@ -39,3 +40,4 @@
 .searchbar:focus {
   outline: none;
 }
+

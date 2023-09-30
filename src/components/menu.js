@@ -66,19 +66,19 @@ const Menu = ({ active , onClick}) => {
         <div className="menu-items">
           <div className={`menu-item ${"home"===active ? "active" : ""}`} onClick={handleHomeButton}>
             <span className="material-symbols-rounded">home</span>
-            <span className="menu-item-name">Home</span>
+            <span className="menu-item-name text--body">Home</span>
           </div>
           <div className={`menu-item ${"workouts"===active ? "active" : ""}`}  onClick={handleWorkoutsButton}>
             <span className="material-symbols-rounded">fitness_center</span>
-            <span className="menu-item-name">Workouts</span>
+            <span className="menu-item-name text--body">Workouts</span>
           </div>
           <div className={`menu-item ${"exercises"===active ? "active" : ""}`}  onClick={handleExerciseButton}>
             <span className="material-symbols-rounded">list</span>
-            <span className="menu-item-name">Exercises</span>
+            <span className="menu-item-name text--body">Exercises</span>
           </div>
           <div className={`menu-item ${"profile"===active ? "active" : ""}`}  onClick={handleProfileButton}>
             <span className="material-symbols-rounded">account_circle</span>
-            <span className="menu-item-name">Profile</span>
+            <span className="menu-item-name text--body">Profile</span>
           </div>
         </div>
       </div>

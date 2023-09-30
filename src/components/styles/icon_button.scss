@@ -45,6 +45,22 @@
       cursor: pointer;
     }
   }
+  &--arrow-left {
+    background: transparent;
+    color: white;
+    height: 3rem;
+    width: 3rem;
+    padding: 0;
+
+    & > .material-symbols-rounded {
+      font-size: 42px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
 
   &--edit {
     background: transparent;
@@ -59,8 +75,16 @@
 
   &--delete {
     background: transparent;
-    color: white;
     color: $main-color;
+
+    &:hover {
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+  &--delete-white {
+    background: transparent;
+    color: white;
 
     &:hover {
       cursor: pointer;
@@ -70,7 +94,6 @@
   &--menu {
     background: transparent;
     color: white;
-    color: $main-color;
     height: 2.5rem;
     width: 2.5rem;
     padding: 0;
@@ -83,7 +106,6 @@
   &--close {
     background: transparent;
     color: white;
-    color: $main-color;
     height: 2.5rem;
     width: 2.5rem;
     padding: 0;
