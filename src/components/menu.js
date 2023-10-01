@@ -1,10 +1,12 @@
 import React, { useEffect,useState } from "react";
 import IconButton from "./icon_button";
 import "./styles/menu.scss";
+import Profile from "../views/Profile";
 
 const Menu = ({ active , onClick}) => {
 
   const [isShown, setIsShown] = useState(false);
+  const [isProfileVisible, setIsProfileVisible] = useState(false); // State to control profile visibility
 
   useEffect(() => {
     const menuButton = document.querySelector(".menu-button");
@@ -45,7 +47,8 @@ const Menu = ({ active , onClick}) => {
   }
 
   const handleProfileButton = () => {
-    onClick('profile');
+    setIsProfileVisible(true);
+    onClick('/profile');
   }
 
   const handleMenuState = () => {
@@ -82,6 +85,9 @@ const Menu = ({ active , onClick}) => {
           </div>
         </div>
       </div>
+      {/* Conditionally render the Profile component */}
+      {isProfileVisible && <Profile />}
+
     </>
   );
 };

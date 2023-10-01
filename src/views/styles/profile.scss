@@ -1,0 +1,88 @@
+@import "../../components/styles/global.scss";
+
+.profile-page-container {
+  display: flex;
+  justify-content: center; // Center horizontally
+  align-items: center; // Center vertically
+  height: 100vh; // Center within the viewport
+}
+
+.menu-container {
+  max-width: 20%; // Set a maximum width for the menu
+}
+
+.profile-container {
+  flex: 2;
+  position: relative;
+}
+
+.profile-table {
+  width: auto; // Allow the table to adjust its width based on content
+  text-align: center; // Center the table horizontally
+  margin: 0 auto; // Center the table horizontally within the profile-container
+}
+
+.profile-username {
+  text-align: center;
+}
+
+.username-label {
+  font-family: 'Your-Label-Font', sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+  text-align: left; // Align the username label to the left
+  padding-left: 10px; // Add padding to the username label for spacing
+  line-height: 1.5; // Add line height to the label
+}
+
+.profile-label {
+  font-family: 'Your-Label-Font', sans-serif;
+  font-weight: bold;
+  color: white;
+  text-align: left; // Align labels to the left
+  padding-left: 10px; // Add padding to labels for spacing
+  line-height: 1.5; // Add line height to the label
+}
+
+.profile-info {
+  font-family: 'Your-Info-Font', sans-serif;
+  font-weight: normal;
+  color: white;
+  text-align: left; // Align info to the left
+  padding-left: 10px; // Add padding to info for spacing
+  line-height: 1.5; // Add line height to the data
+}
+
+.profile-picture img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+// Add a gray border to the profile picture
+.profile-picture-border {
+  border: 2px solid gray;
+  border-radius: 50%;
+}
+
+// Add styles for the edit button container
+.edit-button-container {
+  text-align: center; // Center the button horizontally
+  padding-top: 20px; // Add padding for spacing
+}
+
+// Adjust styles for the edit button
+.edit-button {
+  background-color: gray;
+  color: green;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background-color: darkgray;
+}
