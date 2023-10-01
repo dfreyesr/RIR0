@@ -3,7 +3,7 @@ import "./styles/global.scss";
 import IconButton from "../components/icon_button";
 import SearchBar from "../components/search_bar";
 import Card from "../components/card";
-import AddWorkoutPopup from "./AddWorkout.js"; // Import the popup component
+import AddWorkoutPopup from "./AddWorkout.js"; 
 import Loader from "../components/loader";
 
 const Workouts = ({ workouts, onWorkoutSelect }) => {
@@ -52,9 +52,9 @@ const Workouts = ({ workouts, onWorkoutSelect }) => {
 
   return (
     <div className="default-screen-component-container">
-      <span className="action-button">
-        <IconButton theme="add" onClick={handleAddWorkout} />
-      </span>
+        <span className="back-button">
+          <IconButton theme="arrow-left" onClick={onBackClick} />
+        </span>
       <h1 className="text--heading">Workouts</h1>
       <SearchBar onSearch={handleOnSearch} />
       {filteredItems.map((workout) => (

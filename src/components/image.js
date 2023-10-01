@@ -11,7 +11,7 @@ const Image = ({ src, alt, onAdd }) => {
           <Button text="Add image" theme="add-image" onClick={onAdd}/>
         </>
       ) : (
-        <img src={src} alt={alt} />
+        <img className="image-container-cover" src={src} alt={alt} />
       )}
     </div>
   );

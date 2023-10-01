@@ -73,13 +73,6 @@ const AddWorkoutPopup = ({ onClose }) => {
     };
   };
 
-  const addTag = () => {
-    const newTag = tagInputRef.current.value.trim();
-    if (newTag) {
-      setTags([...tags, newTag]);
-      tagInputRef.current.value = "";
-    }
-  };
 
   return (
     <div className="add-workout-popup">
@@ -147,19 +140,6 @@ const AddWorkoutPopup = ({ onClose }) => {
               </tr>
               <tr>
                 <td className="form-group" colSpan="2">
-                  <label className="tagsInput" htmlFor="tags">
-                    Tags
-                  </label>
-                  <div className="tags-container">
-                    {tags.map((tag, index) => (
-                      <div key={index} className="tag">
-                        <span className="tag-card"><FontAwesomeIcon icon={faPlus} className="tag-plus-icon" />{tag}</span>
-                        
-                      </div>
-                    ))}
-                  </div>
-                  <input type="text" id="tag-inputs" ref={tagInputRef} />
-                  <button className="addTag" onClick={addTag}>Add Tag</button>
                 </td>
               </tr>
             </tbody>

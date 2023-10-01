@@ -4,27 +4,31 @@ import Menu from "../components/menu";
 import Workouts from "./Workouts";
 import WorkoutDetail from "./WorkoutDetail";
 
-const Tracker = ({ active }) => {
+const Workout = ({ active }) => {
   const [selectedWorkout, setSelectedWorkout] = useState(null);
   const [showWorkoutDetail, setShowWorkoutDetail] = useState(false);
-  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768); 
-  
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
+  const [view, setView] = useState("workout-chooser");
+
   const [data, setData] = useState(
-    fetch("https://my.api.mockaroo.com/workouts?key=f97b3370", {
-      headers: {
-        Accept: "application/json",
-      },
-    })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+    fetch(
+      "https://raw.githubusercontent.com/isis3710-uniandes/ISIS3710_202320_S2_E07_Front/master/endpoints/workouts.json?token=GHSAT0AAAAAACHMZ4QHUOI2Z5HN6YAN4RSMZIZ5D7A",
+      {
+        headers: {
+          Accept: "application/json",
+        },
       }
-      return response.json();
-    })
-    .catch((error) => {
-      console.error("There was an error fetching the data:", error);
-      throw error;
-    })
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the data:", error);
+        throw error;
+      })
   );
 
   useEffect(() => {
@@ -44,6 +48,10 @@ const Tracker = ({ active }) => {
     setShowWorkoutDetail(false);
   };
 
+  const handleButtonClick = (workout) => {
+    console.log(workout);
+    setView("workout-start");
+  };
 
   return (
     <div className="default-screen-container">
@@ -51,34 +59,34 @@ const Tracker = ({ active }) => {
         <Menu active={active} />
       ) : null}
 
-      {isMobileView ? (
-        showWorkoutDetail ? (
-          <WorkoutDetail
-            workout={selectedWorkout}
-            onBackClick={handleBackClick}
-          />
-        ) : (
-          <Workouts
-            workouts={data}
-            onWorkoutSelect={handleWorkoutSelect}
-          />
-        )
-      ) : (
-        <>
-          <Workouts
-            workouts={data}
-            onWorkoutSelect={handleWorkoutSelect}
-          />
-          {showWorkoutDetail && (
+      {view === "workout-chooser" ? (
+        isMobileView ? (
+          showWorkoutDetail ? (
             <WorkoutDetail
               workout={selectedWorkout}
               onBackClick={handleBackClick}
+              onButtonClick={handleButtonClick}
             />
-          )}
-        </>
+          ) : (
+            <Workouts workouts={data} onWorkoutSelect={handleWorkoutSelect} />
+          )
+        ) : (
+          <>
+            <Workouts workouts={data} onWorkoutSelect={handleWorkoutSelect} />
+            {showWorkoutDetail && (
+              <WorkoutDetail
+                workout={selectedWorkout}
+                onBackClick={handleBackClick}
+                onButtonClick={handleButtonClick}
+              />
+            )}
+          </>
+        )
+      ) : (
+        <div>Add metrics</div>
       )}
     </div>
   );
 };
 
-export default Tracker;
+export default Workout;
