@@ -77,7 +77,7 @@ const AddWorkoutPopup = ({ onClose }) => {
     const newTag = tagInputRef.current.value.trim();
     if (newTag) {
       setTags([...tags, newTag]);
-      tagInputRef.current.value = ""; // Clear the input field
+      tagInputRef.current.value = "";
     }
   };
 
