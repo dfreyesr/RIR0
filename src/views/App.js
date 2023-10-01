@@ -3,6 +3,7 @@ import Landing from './Landing.js';
 import SignUp from './SignUp.js';
 import LogIn from './LogIn.js';
 import Tracker from './Tracker.js'
+import Profile from './Profile.js'
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
          <Route path="/sign-up" element={<SignUp />} />
          <Route path="/log-in" element={<LogIn />} />
          <Route path="/tracker" element={<Tracker active={"workouts"} />} />
+         <Route path="/profile" element={<Profile/>} />
        </Routes>
      </BrowserRouter>
    </div>
