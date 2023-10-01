@@ -48,8 +48,6 @@ function Profile({ active }) {
             <tr><br></br></tr>
             <tr>
               <td className="profile-label">Name:</td>
-            </tr>
-            <tr>
               <td className="profile-info">
                 {isEditing ? (
                   <input
@@ -66,8 +64,6 @@ function Profile({ active }) {
             </tr>
             <tr>
               <td className="profile-label">Bio:</td>
-            </tr>
-            <tr>
               <td className="profile-info">
                 {isEditing ? (
                   <input
@@ -84,8 +80,6 @@ function Profile({ active }) {
             </tr>
             <tr>
               <td className="profile-label">Height:</td>
-            </tr>
-            <tr>
               <td className="profile-info">
                 {isEditing ? (
                   <input
@@ -102,8 +96,6 @@ function Profile({ active }) {
             </tr>
             <tr>
               <td className="profile-label">Weight:</td>
-            </tr>
-            <tr>
               <td className="profile-info">
                 {isEditing ? (
                   <input
@@ -123,13 +115,6 @@ function Profile({ active }) {
                 <button
                   className="edit-button"
                   onClick={toggleEditing}
-                  style={{
-                    backgroundColor: '#424242', // Set the background color to #424242
-                    color: '#CAFF5A',
-                    borderRadius: '5px',
-                    marginTop: '20px',
-                    width: '100%', // Make the button as wide as the table
-                  }}
                 >
                   {isEditing ? 'Save' : 'Edit'}
                 </button>
