@@ -1,13 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/global.scss";
 import IconButton from "../components/icon_button";
 import SearchBar from "../components/search_bar";
 import Card from "../components/card";
 import AddWorkoutPopup from "./AddWorkout.js"; // Import the popup component
+import Loader from "../components/loader";
 
 const Workouts = ({ workouts, onWorkoutSelect }) => {
-  const [filteredItems, setFilteredItems] = useState(workouts);
   const [showPopup, setShowPopup] = useState(false); // State for controlling the popup visibility
+  const [filteredItems, setFilteredItems] = useState([]);
+  const [workoutsList, setWorkoutsList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    workouts
+      .then(data => {
+        console.log(data);
+        setWorkoutsList(data);
+        setFilteredItems(data)
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error("Error fetching workouts:", error);
+        setLoading(false);
+      });
+  }, [workouts]);
 
   const handleAddWorkout = () => {
     setShowPopup(true); // Show the popup when the "Add Workout" button is clicked
@@ -22,11 +39,16 @@ const Workouts = ({ workouts, onWorkoutSelect }) => {
   };
 
   const handleOnSearch = (value) => {
-    const filtered = workouts.filter((item) =>
+    const filtered = workoutsList.filter(item =>
       item.name.toLowerCase().includes(value.toLowerCase())
     );
-    setFilteredItems(value ? filtered : workouts);
-  };
+    setFilteredItems(value ? filtered : workoutsList);
+};
+
+
+  if (loading) {
+    return <Loader></Loader>;
+  }
 
   return (
     <div className="default-screen-component-container">
