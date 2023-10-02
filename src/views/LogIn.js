@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import Text from "../components/text";
 import "./styles/login.scss";
 import Input from "../components/input";
-import Checkbox from "../components/checkbox";
 import Button from "../components/button";
 import favicon from "./static/favicon.ico";
 import banner from "./static/banner.png";
@@ -34,8 +33,11 @@ function LogIn() {
     setFormValues({ ...formValues, password: e.target.value });
   };
 
-  const validateForm = (e) => {
+
+  const validateForm = async (e) => {
+
     e.preventDefault();
+
     const formValidation = {
       password: formValues.password.length >= 8,
       email: /^[\w-.]+@[\w-]+\.\w+(\.\w+)*$/.test(formValues.email),
@@ -47,37 +49,34 @@ function LogIn() {
     );
 
     if (isFormValid) {
-      authenticateUser();
-    }
-  };
 
-  const authenticateUser = async () => {
-    try {
-      const response = await fetch(
-        "https://raw.githubusercontent.com/isis3710-uniandes/ISIS3710_202320_S2_E07_Front/master/endpoints/Athletes.json?token=GHSAT0AAAAAACHE7AINCMXS3J3IT47XVAQ6ZI2EM5Q"
-      );
+      try {
+        const { email, password } = formValues;
+        const url = `https://testingweb-d5b69093bb75.herokuapp.com/api/usuario/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+
+        if (data.success) {
+          navigate('/tracker');
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.error("Error:", error);
       }
 
-      const data = await response.json();
-
-      const { email, password } = formValues;
-      const user = data.find((user) => user.user == email && user.password == password);
-      if (user) {
-        navigate('/tracker');
-      } else {
-        alert("Incorrect email or password. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error:", error);
     }
   };
 
   return (
     <div className="default-container-login">
-      <img className="logo" src={favicon} alt="logo"></img>
+      <img className="logo" src={favicon} alt="logo" />
       <div className="app">
         <form>
           <div className="title text--heading bold center">
@@ -106,7 +105,7 @@ function LogIn() {
           </span>
         </form>
       </div>
-      <img className="banner" src={banner} alt="Banner"></img>
+      <img className="banner" src={banner} alt="Banner" />
     </div>
   );
 }
