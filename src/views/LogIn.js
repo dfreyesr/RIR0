@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import Text from "../components/text";
 import "./styles/login.scss";
 import Input from "../components/input";
@@ -32,7 +33,9 @@ function LogIn() {
     setFormValues({ ...formValues, password: e.target.value });
   };
 
+
   const validateForm = async (e) => {
+
     e.preventDefault();
 
     const formValidation = {
@@ -46,6 +49,7 @@ function LogIn() {
     );
 
     if (isFormValid) {
+
       try {
         const { email, password } = formValues;
         const url = `https://testingweb-d5b69093bb75.herokuapp.com/api/usuario/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
@@ -66,6 +70,7 @@ function LogIn() {
       } catch (error) {
         console.error("Error:", error);
       }
+
     }
   };
 
