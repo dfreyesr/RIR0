@@ -73,6 +73,10 @@ const AddWorkoutPopup = ({ onClose }) => {
     };
   };
 
+  const handleAddWorkOut = () => {
+    alert("LLamamos al back con /POST para agregar el workout");
+  }
+
 
   return (
     <div className="add-workout-popup">
@@ -147,7 +151,7 @@ const AddWorkoutPopup = ({ onClose }) => {
         </div>
         <div className="button-group">
           <button className="add-exercise-button"><FontAwesomeIcon icon={faPlus} className="tag-plus-icon" />Add Exercise</button>
-          <button className="save-button">Save</button>
+          <button onClick={handleAddWorkOut} className="save-button">Save</button>
           <button className="cancel-button" onClick={onClose}>
             Cancel
           </button>

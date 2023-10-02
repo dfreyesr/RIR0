@@ -24,7 +24,7 @@ const Tracker = ({ active }) => {
 
   const [workoutsData, setworkoutsData] = useState(
     fetch(
-      "https://raw.githubusercontent.com/isis3710-uniandes/ISIS3710_202320_S2_E07_Front/master/endpoints/workouts.json?token=GHSAT0AAAAAACHMZ4QGSVR2LYTJ2KNIOBRSZI2IG3Q",
+      "https://raw.githubusercontent.com/isis3710-uniandes/ISIS3710_202320_S2_E07_Front/master/endpoints/workouts.json?token=GHSAT0AAAAAACHMZ4QHPWIZJXV4CCUJCEDEZI2LEKQ",
       {
         headers: {
           Accept: "application/json",
@@ -45,7 +45,7 @@ const Tracker = ({ active }) => {
 
   const [exercisesData, setExersicesData] = useState(
     fetch(
-      "https://raw.githubusercontent.com/isis3710-uniandes/ISIS3710_202320_S2_E07_Front/master/endpoints/Exercises.json?token=GHSAT0AAAAAACHMZ4QH3VFGOZU7VP7AAYCIZI2HO4Q",
+      "https://raw.githubusercontent.com/isis3710-uniandes/ISIS3710_202320_S2_E07_Front/master/endpoints/Exercises.json?token=GHSAT0AAAAAACHMZ4QHF6JAIFHIUAMMDJD6ZI2LEQA",
       {
         headers: {
           Accept: "application/json",
