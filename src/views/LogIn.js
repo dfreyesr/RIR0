@@ -1,5 +1,5 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import Text from "../components/text";
 import "./styles/login.scss";
 import Input from "../components/input";
@@ -10,7 +10,6 @@ import banner from "./static/banner.png";
 import { useNavigate } from "react-router-dom";
 
 function LogIn() {
-
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
@@ -31,16 +30,15 @@ function LogIn() {
     setFormValues({ ...formValues, email: e.target.value });
   };
 
-
   const handlePasswordChange = (e) => {
     setFormValues({ ...formValues, password: e.target.value });
   };
 
-  function validateForm(e) {
+  const validateForm = (e) => {
     e.preventDefault();
     const formValidation = {
-      password: formValues.password.length >= 9,
-      email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formValues.email),
+      password: formValues.password.length >= 8,
+      email: /^[\w-.]+@[\w-]+\.\w+(\.\w+)*$/.test(formValues.email),
     };
 
     setFormValidity(formValidation);
@@ -49,13 +47,33 @@ function LogIn() {
     );
 
     if (isFormValid) {
-      sendForm();
+      authenticateUser();
     }
-  }
+  };
 
-  function sendForm() {
-    navigate('/tracker');
-  }
+  const authenticateUser = async () => {
+    try {
+      const response = await fetch(
+        "https://raw.githubusercontent.com/isis3710-uniandes/ISIS3710_202320_S2_E07_Front/master/endpoints/Athletes.json?token=GHSAT0AAAAAACHE7AINCMXS3J3IT47XVAQ6ZI2EM5Q"
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+
+      const { email, password } = formValues;
+      const user = data.find((user) => user.user == email && user.password == password);
+      if (user) {
+        navigate('/tracker');
+      } else {
+        alert("Incorrect email or password. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <div className="default-container-login">
