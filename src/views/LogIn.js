@@ -1,16 +1,13 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Text from "../components/text";
 import "./styles/login.scss";
 import Input from "../components/input";
-import Checkbox from "../components/checkbox";
 import Button from "../components/button";
 import favicon from "./static/favicon.ico";
 import banner from "./static/banner.png";
 import { useNavigate } from "react-router-dom";
 
 function LogIn() {
-
   const [formValues, setFormValues] = useState({
     email: "",
     password: "",
@@ -31,16 +28,16 @@ function LogIn() {
     setFormValues({ ...formValues, email: e.target.value });
   };
 
-
   const handlePasswordChange = (e) => {
     setFormValues({ ...formValues, password: e.target.value });
   };
 
-  function validateForm(e) {
+  const validateForm = async (e) => {
     e.preventDefault();
+
     const formValidation = {
-      password: formValues.password.length >= 9,
-      email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formValues.email),
+      password: formValues.password.length >= 8,
+      email: /^[\w-.]+@[\w-]+\.\w+(\.\w+)*$/.test(formValues.email),
     };
 
     setFormValidity(formValidation);
@@ -49,17 +46,32 @@ function LogIn() {
     );
 
     if (isFormValid) {
-      sendForm();
-    }
-  }
+      try {
+        const { email, password } = formValues;
+        const url = `https://testingweb-d5b69093bb75.herokuapp.com/api/usuario/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
 
-  function sendForm() {
-    navigate('/tracker');
-  }
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+
+        if (data.success) {
+          navigate('/tracker');
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+  };
 
   return (
     <div className="default-container-login">
-      <img className="logo" src={favicon} alt="logo"></img>
+      <img className="logo" src={favicon} alt="logo" />
       <div className="app">
         <form>
           <div className="title text--heading bold center">
@@ -88,7 +100,7 @@ function LogIn() {
           </span>
         </form>
       </div>
-      <img className="banner" src={banner} alt="Banner"></img>
+      <img className="banner" src={banner} alt="Banner" />
     </div>
   );
 }
