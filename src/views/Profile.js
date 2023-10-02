@@ -3,7 +3,7 @@ import profileImage from './static/i.png';
 import Menu from '../components/menu';
 import './styles/profile.scss';
 
-function Profile({ active }) {
+function Profile() {
   const [isEditing, setIsEditing] = useState(false);
 
   const [userInfo, setUserInfo] = useState({
@@ -28,9 +28,11 @@ function Profile({ active }) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+
   return (
     <div className="profile-page-container">
-      <div className="profile-container">
+    {!isMobileView && <Menu active="profile" />}
+    <div className="profile-container">
         <table className="profile-table">
           <tbody>
             <tr>

@@ -2,11 +2,13 @@ import React, { useEffect,useState } from "react";
 import IconButton from "./icon_button";
 import "./styles/menu.scss";
 import Profile from "../views/Profile";
+import { useNavigate } from "react-router-dom";
 
-const Menu = ({ active , onClick}) => {
+const Menu = ({ active }) => {
 
   const [isShown, setIsShown] = useState(false);
   const [isProfileVisible, setIsProfileVisible] = useState(false); // State to control profile visibility
+  const navigate = useNavigate();
 
   useEffect(() => {
     const menuButton = document.querySelector(".menu-button");
@@ -35,20 +37,20 @@ const Menu = ({ active , onClick}) => {
   }, []);
 
   const handleHomeButton = () => {
-    onClick('home');
+    navigate('/home');
   }
 
   const handleWorkoutsButton = () => {
-    onClick('workouts');
+    navigate('/tracker');
   }
 
   const handleExerciseButton = () => {
-    onClick('exercises');
+    navigate('/exercises');
   }
 
   const handleProfileButton = () => {
     setIsProfileVisible(true);
-    onClick('/profile');
+   navigate('/profile');
   }
 
   const handleMenuState = () => {

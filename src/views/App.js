@@ -4,7 +4,7 @@ import SignUp from './SignUp.js';
 import LogIn from './LogIn.js';
 import Tracker from './Tracker.js';
 import Profile from './Profile.js';
-import Metrics from './Metrics.js';
+import Exercises from './Exercises.js';
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
          <Route path="/log-in" element={<LogIn />} />
          <Route path="/tracker" element={<Tracker active={"workouts"} />} />
          <Route path="/profile" element={<Profile/>} />
-         <Route path="/metrics" element={<Metrics/>} />
+         <Route path="/exercises" element={<Exercises/>} />
        </Routes>
      </BrowserRouter>
    </div>

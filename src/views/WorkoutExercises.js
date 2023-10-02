@@ -1,15 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/global.scss";
 import IconButton from "../components/icon_button";
-import Image from "../components/image";
-import Card from "../components/card";
 import Button from "../components/button";
+import Card from "../components/card";
 import Loader from "../components/loader";
-import { useState,useEffect } from "react";
 
-
-const WorkoutDetail = ({ exercises,workout, onBackClick, onButtonClick }) => {
-
+const WorkoutExercises = ({ workout, exercises, onBackClick ,onSelectedExercise, onSubmitClick}) => {
   const [filteredItems, setFilteredItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -26,41 +22,35 @@ const WorkoutDetail = ({ exercises,workout, onBackClick, onButtonClick }) => {
         setLoading(false);
       });
   }, [exercises, workout]); 
-
-  const isMobile = window.innerWidth <= 768;
   
-  const handleStartWorkout = () => {
-    onButtonClick(workout);
-  }
 
-  const handleCardClick = (description) => {
-    alert("Exercise info: " + description);
-  }
+  const handleCardClick = (exercise) => {
+    onSelectedExercise(exercise);
+  };
 
   if (loading) {
     return <Loader></Loader>;
   }
 
   return (
-    <div className="default-screen-component-container flex-sized-box">
-      {isMobile && ( 
+    <div className="default-screen-component-container">
         <span className="back-button">
           <IconButton theme="arrow-left" onClick={onBackClick} />
         </span>
-      )}
       <h1 className="text--heading">{workout.name}</h1>
-      <Image src={workout.img}/>
-      <h3 className="text--body">{workout.description}</h3>
-      <Button text="Start Workout" theme="primary" onClick={handleStartWorkout} />
       {filteredItems.map((exercise) => (
         <Card
           key={exercise.name}
           toDisplay={exercise}
-          onClick={() => handleCardClick(exercise.description)}
+          onClick={() => handleCardClick(exercise.name)}
         />
       ))}
+
+      <Button onClick={onSubmitClick} text="Finish Workout" theme="primary"/>
+   
     </div>
   );
 };
 
-export default WorkoutDetail;
+export default WorkoutExercises;
+

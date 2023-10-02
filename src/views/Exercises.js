@@ -1,73 +1,86 @@
 import React, { useState, useEffect } from "react";
-import "./styles/global.scss";
-import IconButton from "../components/icon_button";
-import SearchBar from "../components/search_bar";
-import Card from "../components/card";
-import AddWorkoutPopup from "./AddWorkout.js"; 
-import Loader from "../components/loader";
+import "./styles/tracker.scss";
+import Menu from "../components/menu";
+import ExerciseDetail from "./ExerciseDetail";
+import ExerciseList from "./ExerciseList";
 
-const Workouts = ({ workouts, onWorkoutSelect }) => {
-  const [showPopup, setShowPopup] = useState(false); // State for controlling the popup visibility
-  const [filteredItems, setFilteredItems] = useState([]);
-  const [workoutsList, setWorkoutsList] = useState([]);
-  const [loading, setLoading] = useState(true);
+const Exercises = () => {
+  const [selectedExercise, setSelectedExercise] = useState(null);
+  const [showExerciseDetail, setShowExerciseDetail] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
+
+  const [exercisesData, setExercisesData] = useState(
+    fetch(
+      "https://raw.githubusercontent.com/isis3710-uniandes/ISIS3710_202320_S2_E07_Front/master/endpoints/Exercises.json?token=GHSAT0AAAAAACHMZ4QH3VFGOZU7VP7AAYCIZI2HO4Q",
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the data:", error);
+        throw error;
+      })
+  );
 
   useEffect(() => {
-    workouts
-      .then(data => {
-        console.log(data);
-        setWorkoutsList(data);
-        setFilteredItems(data)
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error("Error fetching workouts:", error);
-        setLoading(false);
-      });
-  }, [workouts]);
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  const handleAddWorkout = () => {
-    setShowPopup(true); // Show the popup when the "Add Workout" button is clicked
+  const handleExerciseSelect = (exercise) => {
+    setSelectedExercise(exercise);
+    setShowExerciseDetail(true);
   };
 
-  const handleClosePopup = () => {
-    setShowPopup(false); // Close the popup when needed
+  const handleBackClick = () => {
+    setShowExerciseDetail(false);
   };
-
-  const handleCardClick = (workout) => {
-    onWorkoutSelect(workout);
-  };
-
-  const handleOnSearch = (value) => {
-    const filtered = workoutsList.filter(item =>
-      item.name.toLowerCase().includes(value.toLowerCase())
-    );
-    setFilteredItems(value ? filtered : workoutsList);
-};
-
-
-  if (loading) {
-    return <Loader></Loader>;
-  }
 
   return (
-    <div className="default-screen-component-container">
-        <span className="back-button">
-          <IconButton theme="arrow-left" onClick={onBackClick} />
-        </span>
-      <h1 className="text--heading">Workouts</h1>
-      <SearchBar onSearch={handleOnSearch} />
-      {filteredItems.map((workout) => (
-        <Card
-          key={workout.name}
-          toDisplay={workout}
-          onClick={() => handleCardClick(workout)}
-        />
-      ))}
-      {showPopup && <AddWorkoutPopup onClose={handleClosePopup} />}{" "}
+    <div className="default-screen-container">
+      {!isMobileView || (isMobileView && !showExerciseDetail) ? (
+        <Menu active="exercises" />
+      ) : null}
+
+      {isMobileView ? (
+        showExerciseDetail ? (
+          <ExerciseDetail
+            onBackClick={handleBackClick}
+            exercise={selectedExercise}
+          />
+        ) : (
+          <ExerciseList
+            exercises={exercisesData}
+            onExerciseSelect={handleExerciseSelect}
+          />
+        )
+      ) : (
+        <>
+          <ExerciseList
+            exercises={exercisesData}
+            onExerciseSelect={handleExerciseSelect}
+          />
+          {showExerciseDetail && (
+            <ExerciseDetail
+              onBackClick={handleBackClick}
+              exercise={selectedExercise}
+            />
+          )}
+        </>
+      )}
     </div>
   );
 };
 
-export default Workouts;
-
+export default Exercises;
