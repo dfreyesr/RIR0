@@ -135,7 +135,8 @@ const Tracker = ({ active }) => {
 
   const handleSubmit = () => {
     if (window.confirm("Are you sure you want to end training session?!")) {
-      alert("/POST\n" + JSON.stringify(session));
+      console.log(JSON.stringify(session));
+      alert(" Aquí haremos el llamado POST al back /POST\n" + JSON.stringify(session));
       window.location.reload();
     }
   };

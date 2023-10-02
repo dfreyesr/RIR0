@@ -5,7 +5,7 @@ import LogIn from './LogIn.js';
 import Tracker from './Tracker.js';
 import Profile from './Profile.js';
 import Exercises from './Exercises.js';
-
+import Home from './Home.js';
 
 function App() {
  return (
@@ -18,6 +18,7 @@ function App() {
          <Route path="/tracker" element={<Tracker active={"workouts"} />} />
          <Route path="/profile" element={<Profile/>} />
          <Route path="/exercises" element={<Exercises/>} />
+         <Route path="/home" element={<Home/>} />
        </Routes>
      </BrowserRouter>
    </div>

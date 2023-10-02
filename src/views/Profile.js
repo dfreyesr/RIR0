@@ -47,7 +47,7 @@ function Profile() {
                 </span>
               </td>
             </tr>
-            <tr><br></br></tr>
+            <tr></tr>
             <tr>
               <td className="profile-label">Name:</td>
             </tr>
