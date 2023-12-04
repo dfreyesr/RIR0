@@ -59,7 +59,7 @@ const Home = () => {
 
   useEffect(() => {
     fetch(
-      "https://raw.githubusercontent.com/isis3710-uniandes/ISIS3710_202320_S2_E07_Front/master/endpoints/TrainingSession.json?token=GHSAT0AAAAAACHMZ4QGZPDEHZDGXBX2ML2WZI2KH5A"
+      "https://raw.githubusercontent.com/isis3710-uniandes/ISIS3710_202320_S2_E07_Front/master/endpoints/TrainingSession.json?token=GHSAT0AAAAAACK7OGFYPLSBAKWKDHOXRXIKZLNMYWQ"
     )
       .then((response) => {
         if (!response.ok) {
@@ -92,7 +92,7 @@ const Home = () => {
 
   return (
     <div className="default-screen-container">
-      {!isMobileView && <Menu active="charts" />}
+      {!isMobileView && <Menu active="home" />}
       <div className="home-container">
         <p className="text--heading bold">Welcome, Lionel</p>
         <p className="text--subheading">

@@ -22,7 +22,7 @@ function LogIn() {
   const navigate = useNavigate();
 
   const navigateToSignIn = () => {
-    navigate('/sign-up');
+    navigate("/sign-up");
   };
 
   const handleEmailChange = (e) => {
@@ -33,9 +33,7 @@ function LogIn() {
     setFormValues({ ...formValues, password: e.target.value });
   };
 
-
   const validateForm = async (e) => {
-
     e.preventDefault();
 
     const formValidation = {
@@ -49,6 +47,7 @@ function LogIn() {
     );
 
     if (isFormValid) {
+      /*
 
       try {
         const { email, password } = formValues;
@@ -63,14 +62,15 @@ function LogIn() {
         const data = await response.json();
 
         if (data.success) {
-          navigate('/tracker');
+        
         } else {
           alert(data.message);
         }
       } catch (error) {
         console.error("Error:", error);
       }
-
+*/
+      navigate("/home");
     }
   };
 

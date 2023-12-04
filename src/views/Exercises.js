@@ -11,7 +11,7 @@ const Exercises = () => {
 
   const [exercisesData, setExercisesData] = useState(
     fetch(
-      "https://raw.githubusercontent.com/isis3710-uniandes/ISIS3710_202320_S2_E07_Front/master/endpoints/Exercises.json?token=GHSAT0AAAAAACHMZ4QHF6JAIFHIUAMMDJD6ZI2LEQA",
+      process.env.REACT_APP_API_EXERCISES,
       {
         headers: {
           Accept: "application/json",

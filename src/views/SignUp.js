@@ -73,6 +73,7 @@ function SignUp() {
   }
 
   async function sendForm() {
+    /*
     try {
       const { fn, un, email, password } = formValues;
       const serializableData = { fn, un, email, password };
@@ -91,7 +92,7 @@ function SignUp() {
       const data = await response.json();
 
       if (data.success) {
-        navigate("/log-in");
+        
       } else {
         alert("An error occurred while registering");
       }
@@ -99,6 +100,8 @@ function SignUp() {
       console.error("Error during registration:", error);
       alert("An error occurred while registering");
     }
+    */
+    navigate("/home");
   }
 
   return (
