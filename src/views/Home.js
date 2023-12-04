@@ -59,7 +59,7 @@ const Home = () => {
 
   useEffect(() => {
     fetch(
-      "https://raw.githubusercontent.com/isis3710-uniandes/ISIS3710_202320_S2_E07_Front/master/endpoints/TrainingSession.json?token=GHSAT0AAAAAACK7OGFYPLSBAKWKDHOXRXIKZLNMYWQ"
+      "https://raw.githubusercontent.com/dfreyesr/RIR0/main/endpoints/TrainingSession.json"
     )
       .then((response) => {
         if (!response.ok) {

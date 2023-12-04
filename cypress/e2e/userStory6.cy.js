@@ -1,4 +1,4 @@
-describe("Athlete has access to app to register its metrics.", () => {
+describe("Atlhete can access its own workout plan.", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000/");
 
@@ -8,7 +8,7 @@ describe("Athlete has access to app to register its metrics.", () => {
     cy.url().should("include", "/sign-up");
   });
 
-  it("should log in and register training metrics", () => {
+  it("Atlhete can access its own workout plan", () => {
     cy.get('input[placeholder="Email"]').type("user@example.com");
     cy.get('input[placeholder="Password"]').type("password123");
     cy.get('input[placeholder="Full Name"]').type("Daniel Reyes");
@@ -26,12 +26,10 @@ describe("Athlete has access to app to register its metrics.", () => {
     
     cy.contains('.menu-item-name', 'Workouts').click();
     cy.wait(500);
-    cy.contains('Cardio').click();
-    cy.wait(500);
-    cy.contains('Start Workout').click();
-    cy.wait(500);
-    cy.contains('Cycling').click();
-    cy.contains('Register Metrics').should("exist");
+    cy.contains('Bodyweight Training').click();
+    cy.contains('A type of strength-training where you use your own weight to provide resistance against gravity').should("exist");
+
+
 
   });
 });
