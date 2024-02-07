@@ -96,7 +96,7 @@ function LogIn() {
           <Button text="Login" onClick={validateForm} theme="primary" />
           <span className="text--caption">
             Don't have an account?{" "}
-            <button className="text--caption" onClick={navigateToSignIn}>
+            <button className="button-auth text--caption" onClick={navigateToSignIn}>
               Sign Up
             </button>
           </span>

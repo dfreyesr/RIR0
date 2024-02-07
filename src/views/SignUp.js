@@ -144,7 +144,7 @@ function SignUp() {
           <Button text="Get started" onClick={validateForm} theme="primary" />
           <span className="text--caption">
             Already have an account?{" "}
-            <button className="text--caption" onClick={navigateToLogIn}>
+            <button className="button-auth text--caption" onClick={navigateToLogIn}>
               Log in
             </button>
           </span>
