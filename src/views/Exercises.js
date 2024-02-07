@@ -5,7 +5,7 @@ import ExerciseList from "./ExerciseList";
 import { useNavigate } from "react-router-dom"; 
 const Exercises = () => {
 
-  const API_BASE_URL = "http://localhost:3000/api/exercises";
+  const API_BASE_URL = `${process.env.REACT_APP_API_URL}api/exercises`;
   const navigate = useNavigate();
 
   const [selectedExercise, setSelectedExercise] = useState(null);

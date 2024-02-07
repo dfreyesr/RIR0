@@ -31,7 +31,7 @@ const Tracker = ({ active }) => {
 
   const [loading, setLoading] = useState(true);
 
-  const API_BASE_URL_WORKOUTS = "http://localhost:3000/api/workouts";
+  const API_BASE_URL_WORKOUTS = `${process.env.REACT_APP_API_URL}api/workouts`;
 
   const [workoutsData, setWorkoutsData] = useState([]);
 
@@ -183,7 +183,7 @@ const Tracker = ({ active }) => {
       };
   
       try {
-        const response = await fetch('http://localhost:3000/api/training-session', {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}training-session`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -11,7 +11,6 @@ import CircularJSON from 'circular-json';
 
 function SignUp() {
   const [termsChecked, setTermsChecked] = useState(false);
-  const [trainerChecked, setTrainerChecked] = useState(false);
 
   const [formValues, setFormValues] = useState({
     fn: "",
@@ -81,7 +80,7 @@ function SignUp() {
         password,
       };
   
-      const response = await fetch("http://localhost:3000/api/users", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}api/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -130,20 +129,15 @@ function SignUp() {
             setInputValue={handleEmailChange}
             placeholder="Email"
             type="text"
-            errorlabel="Incorrect email"
+            errorlabel="Email must be valid"
             validity={formValidity.email}
           />
           <Input
             setInputValue={handlePasswordChange}
             placeholder="Password"
             type="password"
-            errorlabel="Incorrect password"
+            errorlabel="Password must be at least 9 characters long"
             validity={formValidity.password}
-          />
-          <Checkbox
-            label="I'm a trainer"
-            isChecked={trainerChecked}
-            setChecked={setTrainerChecked}
           />
           <Checkbox
             label="I accept term and conditions"

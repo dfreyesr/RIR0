@@ -37,7 +37,7 @@ function LogIn() {
     e.preventDefault();
   
     const formValidation = {
-      password: formValues.password.length >= 8,
+      password: true,
       email: /^[\w-.]+@[\w-]+\.\w+(\.\w+)*$/.test(formValues.email),
     };
   
@@ -47,7 +47,7 @@ function LogIn() {
     if (isFormValid) {
       try {
         const { email, password } = formValues;
-        const response = await fetch('http://localhost:3000/api/users/login', {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}api/users/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password }),
@@ -84,7 +84,7 @@ function LogIn() {
             setInputValue={handleEmailChange}
             placeholder="Email"
             type="text"
-            errorlabel="Incorrect email"
+            errorlabel="Enter a valid email"
             validity={formValidity.email}
           />
           <Input

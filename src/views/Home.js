@@ -36,7 +36,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/training-session/${userId}`,
+          `${process.env.REACT_APP_API_URL}api/training-session/${userId}`,
           {
             headers: {
               Accept: "application/json",
@@ -87,7 +87,7 @@ const Home = () => {
       {!isMobileView && <Menu active="home" />}
       <div className="default-home-container">
         <div className="home-container">
-          <p className="text--heading bold">Welcome, Lionel</p>
+          <p className="text--heading bold">Welcome back!</p>
           <p className="text--subheading">
             Weight Lifting Progress Visualizations
           </p>

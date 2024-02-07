@@ -35,7 +35,7 @@ function Profile() {
 
     const fetchUserData = async () => {
       // Replace with the actual endpoint to fetch user data
-      const API_BASE_URL_USER_DATA = `http://localhost:3000/api/users/${localStorage.getItem("userId")}`;
+      const API_BASE_URL_USER_DATA = `${process.env.REACT_APP_API_URL}api/users/${localStorage.getItem("userId")}`;
 
       try {
         const response = await fetch(API_BASE_URL_USER_DATA, {
