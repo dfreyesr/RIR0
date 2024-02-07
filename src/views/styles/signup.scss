@@ -46,7 +46,7 @@
       gap: 1rem;
       padding: 0 16px;
       justify-content: center;
-      align-items: start;
+      align-items: flex-start;
 
       @media (max-width: $breakpoint-mobile-max) {
         width: 100%;
