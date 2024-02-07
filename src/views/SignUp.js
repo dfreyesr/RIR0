@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Text from "../components/text";
 import "./styles/signup.scss";
 import Input from "../components/input";
 import Checkbox from "../components/checkbox";
@@ -7,7 +6,6 @@ import Button from "../components/button";
 import favicon from "./static/favicon.ico";
 import banner from "./static/banner.png";
 import { useNavigate } from "react-router-dom";
-import CircularJSON from 'circular-json';
 
 function SignUp() {
   const [termsChecked, setTermsChecked] = useState(false);
@@ -73,7 +71,7 @@ function SignUp() {
 
   async function sendForm() {
     try {
-      const { fn, un, email, password } = formValues;
+      const { fn, email, password } = formValues;
       const userData = { 
         name: fn, 
         email, 
@@ -92,7 +90,6 @@ function SignUp() {
         throw new Error(await response.text());
       }
   
-      const data = await response.json();
       // Depending on your backend's response, handle accordingly
       alert("Registration successful");
       navigate("/log-in"); // Redirect to login after successful registration
@@ -147,9 +144,9 @@ function SignUp() {
           <Button text="Get started" onClick={validateForm} theme="primary" />
           <span className="text--caption">
             Already have an account?{" "}
-            <a className="text--caption" onClick={navigateToLogIn}>
+            <button className="text--caption" onClick={navigateToLogIn}>
               Log in
-            </a>
+            </button>
           </span>
         </form>
       </div>

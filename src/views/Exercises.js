@@ -63,7 +63,7 @@ const Exercises = () => {
     };
   
     fetchExercises();
-  }, []);
+  },  [API_BASE_URL, navigate]);
   
 
   const handleExerciseSelect = (exercise) => {

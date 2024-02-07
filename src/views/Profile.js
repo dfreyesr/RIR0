@@ -9,12 +9,12 @@ function Profile() {
   const navigate = useNavigate();
   const [authChecked, setAuthChecked] = useState(false);
 
-  const [userInfo, setUserInfo] = useState({
+  const [userInfo] = useState({
     username: localStorage.getItem("email"),
   });
 
 
-  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
+  const [isMobileView] = useState(window.innerWidth <= 768);
 
   const handleLogout = () => {
     localStorage.removeItem("token");

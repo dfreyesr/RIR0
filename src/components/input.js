@@ -1,7 +1,5 @@
 import "./styles/input.scss";
-import PropTypes from "prop-types";
 import Text from "./text";
-import { useState } from "react";
 
 const Input = ({ setInputValue, placeholder, type, label , errorlabel, validity }) => {
   

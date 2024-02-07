@@ -78,7 +78,7 @@ const Tracker = ({ active }) => {
     };
   
     fetchWorkouts();
-  }, []);
+  }, [API_BASE_URL_WORKOUTS,navigate]);
 
   useEffect(() => {
     if (selectedExercise) {

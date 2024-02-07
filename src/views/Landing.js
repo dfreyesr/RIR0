@@ -1,8 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import "./styles/landing.scss";
-import Input from "../components/input";
-import Checkbox from "../components/checkbox";
 import Button from "../components/button";
 import favicon from "./static/favicon.ico";
 import landing_banner from "./static/landing-banner.png";
@@ -38,7 +35,7 @@ function Landing() {
           <Button onClick={navigateToSignIn} text="Sign Up" theme="primary-landing" />
           <Button onClick={navigateToLogIn} text="Log In" theme="secondary-landing" />
         </div>
-        <img src={graphs}></img>
+        <img src={graphs} alt="Graphs"></img>
         <div className="description">
           <span className="text--landing landing-subtitle">What is RIR 0?</span>
           <span className="text--subheading bold center">

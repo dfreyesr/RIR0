@@ -5,7 +5,6 @@ import Card from "../components/card";
 import Loader from "../components/loader";
 
 const Exercises = ({ exercises, onExerciseSelect }) => {
-  const [showPopup, setShowPopup] = useState(false); // State for controlling the popup visibility
   const [filteredItems, setFilteredItems] = useState([]);
   const [exercisesList, setExercisesList] = useState(exercises); // Initialize with exercises directly
   const [loading, setLoading] = useState(false); // Set loading to false initially
@@ -16,10 +15,6 @@ const Exercises = ({ exercises, onExerciseSelect }) => {
     setFilteredItems(exercises);
     setLoading(false);
   }, [exercises]);
-
-  const handleClosePopup = () => {
-    setShowPopup(false); // Close the popup when needed
-  };
 
   const handleCardClick = (exercise) => {
     onExerciseSelect(exercise);

@@ -8,9 +8,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 const AddWorkoutPopup = ({ onClose }) => {
   const [uploadedImage, setUploadedImage] = useState(null);
   const [workoutName, setWorkoutName] = useState("Workout Name");
-  const [tags, setTags] = useState([]);
   const imageContainerRef = useRef(null);
-  const tagInputRef = useRef(null);
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];

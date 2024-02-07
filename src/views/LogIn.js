@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
-import Text from "../components/text";
 import "./styles/login.scss";
 import Input from "../components/input";
 import Button from "../components/button";
@@ -35,42 +33,43 @@ function LogIn() {
 
   const validateForm = async (e) => {
     e.preventDefault();
-  
+
     const formValidation = {
       password: true,
       email: /^[\w-.]+@[\w-]+\.\w+(\.\w+)*$/.test(formValues.email),
     };
-  
+
     setFormValidity(formValidation);
-    const isFormValid = Object.values(formValidation).every(value => value);
-  
+    const isFormValid = Object.values(formValidation).every((value) => value);
+
     if (isFormValid) {
       try {
         const { email, password } = formValues;
-        const response = await fetch(`${process.env.REACT_APP_API_URL}api/users/login`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password }),
-        });
-  
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}api/users/login`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+          }
+        );
+
         if (!response.ok) {
           throw new Error("Invalid credentials");
         }
-  
+
         const data = await response.json();
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('email', email);
-        localStorage.setItem('userId', data.user.id); // Save user ID to local storage
-  
-        navigate('/home');
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("email", email);
+        localStorage.setItem("userId", data.user.id); // Save user ID to local storage
+
+        navigate("/home");
       } catch (error) {
         console.error("Error:", error);
         alert("Login failed: " + error.message);
       }
     }
   };
-  
-  
 
   return (
     <div className="default-container-login">
@@ -97,9 +96,9 @@ function LogIn() {
           <Button text="Login" onClick={validateForm} theme="primary" />
           <span className="text--caption">
             Don't have an account?{" "}
-            <a className="text--caption" onClick={navigateToSignIn}>
+            <button className="text--caption" onClick={navigateToSignIn}>
               Sign Up
-            </a>
+            </button>
           </span>
         </form>
       </div>

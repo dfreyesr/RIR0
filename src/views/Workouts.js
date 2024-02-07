@@ -4,7 +4,6 @@ import IconButton from "../components/icon_button";
 import SearchBar from "../components/search_bar";
 import Card from "../components/card";
 import AddWorkoutPopup from "./AddWorkout.js"; // Import the popup component
-import Loader from "../components/loader";
 
 const Workouts = ({ workouts, onWorkoutSelect }) => {
   const [showPopup, setShowPopup] = useState(false); // State for controlling the popup visibility

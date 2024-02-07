@@ -1,7 +1,6 @@
 import React, { useEffect,useState } from "react";
 import IconButton from "./icon_button";
 import "./styles/menu.scss";
-import Profile from "../views/Profile";
 import { useNavigate } from "react-router-dom";
 
 const Menu = ({ active }) => {
