@@ -21,42 +21,47 @@ ChartJS.register(
   Legend
 );
 
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-      labels: {
-        color: 'white', // Set legend label color to white
+const ExerciseChart = ({ data, dataType }) => {
+  const yAxisLabel = dataType === 'reps' ? 'reps' : 'kg';
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false, // This hides the legend
+        labels: {
+          color: 'white',
+        },
+      },
+      title: {
+        display: false,
+        color: 'white',
       },
     },
-    title: {
-      display: false,
-      color: 'white', // Set title color to white
-    },
-  },
-  scales: {
-    x: {
-      ticks: {
-        color: 'white', // Set x-axis labels color to white
+    scales: {
+      x: {
+        ticks: {
+          color: 'white',
+        },
+        grid: {
+          color: 'rgba(255, 255, 255, 0.1)'
+        }
       },
-      grid: {
-        color: 'rgba(255, 255, 255, 0.1)' // Set x-axis grid lines color (you can adjust opacity as needed)
-      }
-    },
-    y: {
-      ticks: {
-        color: 'white', // Set y-axis labels color to white
-      },
-      grid: {
-        color: 'rgba(255, 255, 255, 0.1)' // Set y-axis grid lines color (you can adjust opacity as needed)
+      y: {
+        beginAtZero: true,
+        ticks: {
+          color: 'white',
+          callback: function(value, index, values) {
+            return `${value} ${yAxisLabel}`;
+          }
+        },
+        grid: {
+          color: 'rgba(255, 255, 255, 0.1)'
+        }
       }
     }
-  }
-};
+  };
 
-
-const ExerciseChart = ({data}) => {
   return (
     <div>
       <Line options={options} data={data} />

@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 const Menu = ({ active }) => {
 
   const [isShown, setIsShown] = useState(false);
-  const [isProfileVisible, setIsProfileVisible] = useState(false); // State to control profile visibility
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -49,7 +48,6 @@ const Menu = ({ active }) => {
   }
 
   const handleProfileButton = () => {
-    setIsProfileVisible(true);
    navigate('/profile');
   }
 
@@ -87,9 +85,6 @@ const Menu = ({ active }) => {
           </div>
         </div>
       </div>
-      {/* Conditionally render the Profile component */}
-      {isProfileVisible && <Profile />}
-
     </>
   );
 };

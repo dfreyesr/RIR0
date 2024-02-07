@@ -7,7 +7,7 @@ const card = ({onClick,toDisplay,id}) => {
   return (
     <div className='cardwrapper'>
       <div className='image'>
-      <img src={toDisplay.img} alt={toDisplay.name}/>
+      <img src={toDisplay.img ? toDisplay.img : toDisplay.image } alt={toDisplay.name}/>
       <div/>
       </div>
       <div className='textwrapper' onClick={() => onClick(id)}>

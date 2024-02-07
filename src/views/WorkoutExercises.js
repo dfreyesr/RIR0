@@ -5,38 +5,31 @@ import Button from "../components/button";
 import Card from "../components/card";
 import Loader from "../components/loader";
 
-const WorkoutExercises = ({ workout, exercises, onBackClick ,onSelectedExercise, onSubmitClick}) => {
+const WorkoutExercises = ({ workout, onBackClick, onSelectedExercise, onSubmitClick }) => {
   const [filteredItems, setFilteredItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    exercises
-      .then(data => {
-        const exercisesName = workout.exercises[0].names;
-        setFilteredItems(data.filter(exercise => exercisesName.includes(exercise.name)));
-        
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error("Error fetching workouts:", error);
-        setLoading(false);
-      });
-  }, [exercises, workout]); 
-  
+    if (workout) {
+      const workoutExercises = workout.exercises.map(ex => ex);
+      setFilteredItems(workoutExercises);
+      setLoading(false);
+    }
+  }, [workout]);
 
   const handleCardClick = (exercise) => {
     onSelectedExercise(exercise);
   };
 
   if (loading) {
-    return <Loader></Loader>;
+    return <Loader />;
   }
 
   return (
     <div className="default-screen-component-container">
-        <span className="back-button">
-          <IconButton theme="arrow-left" onClick={onBackClick} />
-        </span>
+      <span className="back-button">
+        <IconButton theme="arrow-left" onClick={onBackClick} />
+      </span>
       <h1 className="text--heading">{workout.name}</h1>
       {filteredItems.map((exercise) => (
         <Card
@@ -45,12 +38,9 @@ const WorkoutExercises = ({ workout, exercises, onBackClick ,onSelectedExercise,
           onClick={() => handleCardClick(exercise.name)}
         />
       ))}
-
       <Button onClick={onSubmitClick} text="Finish Workout" theme="primary"/>
-   
     </div>
   );
 };
 
 export default WorkoutExercises;
-

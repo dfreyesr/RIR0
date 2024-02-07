@@ -1,34 +1,18 @@
 import React, { useState, useEffect } from "react";
-import "./styles/tracker.scss";
 import Menu from "../components/menu";
 import ExerciseDetail from "./ExerciseDetail";
 import ExerciseList from "./ExerciseList";
-
+import { useNavigate } from "react-router-dom"; 
 const Exercises = () => {
+
+  const API_BASE_URL = "http://localhost:3000/api/exercises";
+  const navigate = useNavigate();
+
   const [selectedExercise, setSelectedExercise] = useState(null);
   const [showExerciseDetail, setShowExerciseDetail] = useState(false);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
+  const [exercisesData, setExercisesData] = useState([]); // Initialize as an empty array
 
-  const [exercisesData, setExercisesData] = useState(
-    fetch(
-      process.env.REACT_APP_API_EXERCISES,
-      {
-        headers: {
-          Accept: "application/json",
-        },
-      }
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .catch((error) => {
-        console.error("There was an error fetching the data:", error);
-        throw error;
-      })
-  );
 
   useEffect(() => {
     const handleResize = () => {
@@ -37,6 +21,50 @@ const Exercises = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+  
+    if (!token) {
+      alert("You are not authenticated. Please log in.");
+      navigate('/log-in');
+      return;
+    }
+  
+    const fetchExercises = async () => {
+      try {
+        const response = await fetch(API_BASE_URL, {
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        if (response.status === 401) {
+          // Token has expired, clear it from localStorage
+          localStorage.removeItem("token");
+          localStorage.removeItem('email');
+          localStorage.removeItem('userId');
+          alert("Your session has expired. Please log in again.");
+          // You can redirect the user 
+          navigate('/log-in');
+          return;
+        }
+  
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+  
+        const data = await response.json();
+        setExercisesData(data); // Update state with fetched data
+      } catch (error) {
+        console.error("There was an error fetching the data:", error);
+      }
+    };
+  
+    fetchExercises();
+  }, []);
+  
 
   const handleExerciseSelect = (exercise) => {
     setSelectedExercise(exercise);
@@ -47,12 +75,17 @@ const Exercises = () => {
     setShowExerciseDetail(false);
   };
 
+  const isAuthenticated = !!localStorage.getItem("token");
+
+  if (!isAuthenticated) {
+    return <div>Please log in to view this page.</div>;
+  }
+
   return (
     <div className="default-screen-container">
       {!isMobileView || (isMobileView && !showExerciseDetail) ? (
         <Menu active="exercises" />
       ) : null}
-
       {isMobileView ? (
         showExerciseDetail ? (
           <ExerciseDetail

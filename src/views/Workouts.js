@@ -10,20 +10,16 @@ const Workouts = ({ workouts, onWorkoutSelect }) => {
   const [showPopup, setShowPopup] = useState(false); // State for controlling the popup visibility
   const [filteredItems, setFilteredItems] = useState([]);
   const [workoutsList, setWorkoutsList] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    workouts
-      .then(data => {
-        console.log(data);
-        setWorkoutsList(data);
-        setFilteredItems(data)
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error("Error fetching workouts:", error);
-        setLoading(false);
-      });
+    console.log("workouts");
+    console.log(workouts);
+            setWorkoutsList(workouts);
+            setFilteredItems(workouts);
+            
+
+
+    
   }, [workouts]);
 
   const handleAddWorkout = () => {
@@ -45,10 +41,6 @@ const Workouts = ({ workouts, onWorkoutSelect }) => {
     setFilteredItems(value ? filtered : workoutsList);
 };
 
-
-  if (loading) {
-    return <Loader></Loader>;
-  }
 
   return (
     <div className="default-screen-component-container">

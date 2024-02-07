@@ -35,44 +35,42 @@ function LogIn() {
 
   const validateForm = async (e) => {
     e.preventDefault();
-
+  
     const formValidation = {
       password: formValues.password.length >= 8,
       email: /^[\w-.]+@[\w-]+\.\w+(\.\w+)*$/.test(formValues.email),
     };
-
+  
     setFormValidity(formValidation);
-    const isFormValid = Object.values(formValidation).every(
-      (value) => value === true
-    );
-
+    const isFormValid = Object.values(formValidation).every(value => value);
+  
     if (isFormValid) {
-      /*
-
       try {
         const { email, password } = formValues;
-        const url = `https://testingweb-d5b69093bb75.herokuapp.com/api/usuario/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
-
-        const response = await fetch(url);
-
+        const response = await fetch('http://localhost:3000/api/users/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
+  
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("Invalid credentials");
         }
-
+  
         const data = await response.json();
-
-        if (data.success) {
-        
-        } else {
-          alert(data.message);
-        }
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('email', email);
+        localStorage.setItem('userId', data.user.id); // Save user ID to local storage
+  
+        navigate('/home');
       } catch (error) {
         console.error("Error:", error);
+        alert("Login failed: " + error.message);
       }
-*/
-      navigate("/home");
     }
   };
+  
+  
 
   return (
     <div className="default-container-login">

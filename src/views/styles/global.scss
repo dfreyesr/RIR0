@@ -4,6 +4,15 @@
 .default-screen-container {
   display: flex;
   flex-direction: row;
+  
+}
+.default-home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh; // Full viewport height
+  width: 100%;
+  overflow: hidden; // Prevent overflow outside this container
 }
 
 .default-screen-component-container {
@@ -56,26 +65,37 @@
   z-index: 1000000;
 }
 
-.home-container{
+.home-container {
+  flex-grow: 1; // Allows container to expand
   display: flex;
-  width: fit-content;
   flex-direction: column;
-  padding: 3rem;
-  box-sizing: border-box;
-  justify-content: center;
   align-items: center;
-  max-height: 100vh;
-  overflow-y: scroll;  
-  
+  overflow-y: auto; // Allow vertical scrolling inside this container
+  padding: 1rem;
+  width: 100%; // Full width
 }
 
-.graph-container{
+.accordion-container {
+  width: 100%; // Ensures accordion takes full width of the container
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.charts-container{
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-  justify-content: center;
-  align-items: center;
-  overflow-y: scroll;  
+}
 
+.workout-accordion{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accordion-title{
+  width: 100%;
 }

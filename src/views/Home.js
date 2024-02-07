@@ -1,107 +1,106 @@
 import React, { useState, useEffect } from "react";
-import ExerciseChart from "./ExerciseChart";
+import WorkoutAccordion from "../components/workout_accordion";
 import Menu from "../components/menu";
+import Loader from "../components/loader"; // Assuming Loader is a component to show while loading
 import "./styles/global.scss";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const [chartDatas, setChartDatas] = useState([]);
+  const [sessionsData, setSessionsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
+  const navigate = useNavigate();
+  const userId = localStorage.getItem("userId");
 
-  const getRandomColor = (opacity = 1) => {
-    const red = Math.floor(Math.random() * 255);
-    const green = Math.floor(Math.random() * 255);
-    const blue = Math.floor(Math.random() * 255);
-    return `rgba(${red}, ${green}, ${blue}, ${opacity})`;
-  };
-
-  const transformDataForExercise = (exerciseName, fetchedData) => {
-    const labels = fetchedData.map((workout) =>
-      new Date(workout.date).toLocaleDateString()
-    );
-
-    const weightData = fetchedData.map((workout) => {
-      const exercise = workout.exercises.find((e) => e.name === exerciseName);
-      return exercise
-        ? exercise.metrics.reduce(
-            (acc, metric) => acc + Number(metric.weight),
-            0
-          )
-        : 0;
-    });
-
-    const repsData = fetchedData.map((workout) => {
-      const exercise = workout.exercises.find((e) => e.name === exerciseName);
-      return exercise
-        ? exercise.metrics.reduce((acc, metric) => acc + Number(metric.reps), 0)
-        : 0;
-    });
-
-    return {
-      labels,
-      datasets: [
-        {
-          label: `${exerciseName} - Weight`,
-          data: weightData,
-          borderColor: getRandomColor(),
-          backgroundColor: getRandomColor(0.5),
-        },
-        {
-          label: `${exerciseName} - Reps`,
-          data: repsData,
-          borderColor: getRandomColor(),
-          backgroundColor: getRandomColor(0.5),
-        },
-      ],
-    };
+  const processData = (fetchedData) => {
+    return fetchedData.map((session) => ({
+      sessionId: session.sessionId,
+      workoutName: session.workout.name,
+      exercises: session.exerciseMetrics
+        .filter((exerciseMetric) => exerciseMetric.metrics.length > 0) // Filter out exercises with empty metrics
+        .map((exerciseMetric) => ({
+          exerciseName: exerciseMetric.exerciseID, // Using 'exerciseID' as the name
+          metrics: exerciseMetric.metrics,
+        })),
+    }));
   };
 
   useEffect(() => {
-    fetch(
-      "https://raw.githubusercontent.com/dfreyesr/RIR0/main/endpoints/TrainingSession.json"
-    )
-      .then((response) => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/log-in");
+      return;
+    }
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/api/training-session/${userId}`,
+          {
+            headers: {
+              Accept: "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (response.status === 401) {
+          localStorage.removeItem("token");
+          localStorage.removeItem("email");
+          localStorage.removeItem("userId");
+          navigate("/log-in");
+          return;
+        }
+
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        return response.json();
-      })
-      .then((fetchedData) => {
-        const allExercises = [
-          ...new Set(
-            fetchedData.flatMap((workout) =>
-              workout.exercises.map((e) => e.name)
-            )
-          ),
-        ];
-        const allChartDatas = allExercises.map((exerciseName) =>
-          transformDataForExercise(exerciseName, fetchedData)
-        );
-        setChartDatas(allChartDatas);
+
+        const fetchedData = await response.json();
+        const processedData = processData(fetchedData);
+        setSessionsData(processedData);
         setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         setError(error);
         setLoading(false);
-      });
+      }
+    };
+
+    fetchData();
+  }, [userId, navigate]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div className="default-screen-container">
       {!isMobileView && <Menu active="home" />}
-      <div className="home-container">
-        <p className="text--heading bold">Welcome, Lionel</p>
-        <p className="text--subheading">
-          Weight Lifting Progress Visualizations
-        </p>
-        <div className="graph-container">
-          {chartDatas.map((data, index) => (
-            <ExerciseChart key={index} data={data} />
-          ))}
+      <div className="default-home-container">
+        <div className="home-container">
+          <p className="text--heading bold">Welcome, Lionel</p>
+          <p className="text--subheading">
+            Weight Lifting Progress Visualizations
+          </p>
+          <div className="accordion-container">
+            {sessionsData.map((session) => (
+              <WorkoutAccordion
+                key={session.sessionId}
+                sessionId={session.sessionId}
+                workoutName={session.workoutName}
+                exercises={session.exercises}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

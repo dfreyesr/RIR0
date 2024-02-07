@@ -73,36 +73,36 @@ function SignUp() {
   }
 
   async function sendForm() {
-    /*
     try {
       const { fn, un, email, password } = formValues;
-      const serializableData = { fn, un, email, password };
-
-      const response = await fetch(
-        "https://testingweb-d5b69093bb75.herokuapp.com/api/usuario/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: CircularJSON.stringify(serializableData)
-        }
-      );
-
-      const data = await response.json();
-
-      if (data.success) {
-        
-      } else {
-        alert("An error occurred while registering");
+      const userData = { 
+        name: fn, 
+        email, 
+        password,
+      };
+  
+      const response = await fetch("http://localhost:3000/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+  
+      if (!response.ok) {
+        throw new Error(await response.text());
       }
+  
+      const data = await response.json();
+      // Depending on your backend's response, handle accordingly
+      alert("Registration successful");
+      navigate("/log-in"); // Redirect to login after successful registration
     } catch (error) {
       console.error("Error during registration:", error);
-      alert("An error occurred while registering");
+      alert("An error occurred while registering: " + error.message);
     }
-    */
-    navigate("/home");
   }
+  
 
   return (
     <div className="default-container-signup">

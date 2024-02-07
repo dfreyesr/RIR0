@@ -1,31 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/global.scss";
-import IconButton from "../components/icon_button";
 import Image from "../components/image";
 import Card from "../components/card";
 import Button from "../components/button";
-import Loader from "../components/loader";
-import { useState,useEffect } from "react";
+import IconButton from "../components/icon_button";
 
 
-const WorkoutDetail = ({ exercises,workout, onBackClick, onButtonClick }) => {
-
+const WorkoutDetail = ({ workout, onBackClick, onButtonClick }) => {
   const [filteredItems, setFilteredItems] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    exercises
-      .then(data => {
-        const exercisesName = workout.exercises[0].names;
-        setFilteredItems(data.filter(exercise => exercisesName.includes(exercise.name)));
-        
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error("Error fetching workouts:", error);
-        setLoading(false);
-      });
-  }, [exercises, workout]); 
+    if (workout && workout.exercises) {
+      setFilteredItems(workout.exercises);
+    }
+  }, [workout]);
 
   const isMobile = window.innerWidth <= 768;
   
@@ -37,13 +25,10 @@ const WorkoutDetail = ({ exercises,workout, onBackClick, onButtonClick }) => {
     alert("Exercise info: " + description);
   }
 
-  if (loading) {
-    return <Loader></Loader>;
-  }
 
   return (
     <div className="default-screen-component-container flex-sized-box">
-      {isMobile && ( 
+       {isMobile && ( 
         <span className="back-button">
           <IconButton theme="arrow-left" onClick={onBackClick} />
         </span>

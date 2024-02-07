@@ -20,7 +20,7 @@ const ExerciseDetail = ({ exercise, onBackClick }) => {
         </span>
       )}
       <h1 className="text--heading">{exercise.name}</h1>
-      <Image src={exercise.img}/>
+      <Image src={exercise.img ? exercise.img : exercise.image}/>
       <h3 className="text--body">{exercise.description}</h3>
     </div>
   );

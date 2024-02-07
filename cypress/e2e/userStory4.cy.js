@@ -32,7 +32,5 @@ describe("Athlete can create an account and personalize it.", () => {
     cy.contains('Save').click();
     cy.contains('Cristiano').should("exist");
 
-
-
   });
 });

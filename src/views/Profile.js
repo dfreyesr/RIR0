@@ -1,33 +1,81 @@
 import React, { useState, useEffect } from 'react';
 import profileImage from './static/i.png';
 import Menu from '../components/menu';
+import Loader from '../components/loader';
 import './styles/profile.scss';
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
-  const [isEditing, setIsEditing] = useState(false);
+  const navigate = useNavigate();
+  const [authChecked, setAuthChecked] = useState(false);
 
   const [userInfo, setUserInfo] = useState({
-    username: 'lionelmessi10',
-    name: 'Lionel Messi',
-    bio: 'Es increíble pero no se me da',
-    height: '1.70 mts',
-    weight: '75 kgs',
+    username: localStorage.getItem("email"),
   });
 
-  const toggleEditing = () => {
-    setIsEditing(!isEditing);
-  };
 
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobileView(window.innerWidth <= 768);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem('email');
+    localStorage.removeItem('userId');
+    alert("Log out was successful.");
+    navigate("/");
+    return;
+  }
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("You are not authenticated. Please log in.");
+      navigate("/log-in");
+      return;
+    }
+
+    const fetchUserData = async () => {
+      // Replace with the actual endpoint to fetch user data
+      const API_BASE_URL_USER_DATA = `http://localhost:3000/api/users/${localStorage.getItem("userId")}`;
+
+      try {
+        const response = await fetch(API_BASE_URL_USER_DATA, {
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.status === 401) {
+          // Token is expired or invalid
+          localStorage.removeItem("token");
+          localStorage.removeItem('email');
+          localStorage.removeItem('userId');
+          alert("Your session has expired. Please log in again.");
+          navigate("/log-in");
+          return;
+        }
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        console.log(data); // Process and set the user data as needed
+        setAuthChecked(true); 
+      } catch (error) {
+        console.error("There was an error fetching user data:", error);
+      }
+      finally {
+        setAuthChecked(true); 
+      }
+    };
+
+    fetchUserData();
+  }, [navigate]);
+
+  if (!authChecked) {
+    return <Loader></Loader>;
+  }
 
   return (
     <div className="profile-page-container">
@@ -53,78 +101,14 @@ function Profile() {
             </tr>
             <tr>
               <td className="profile-info">
-                {isEditing ? (
-                  <input
-                    type="text"
-                    value={userInfo.name}
-                    onChange={(e) =>
-                      setUserInfo({ ...userInfo, name: e.target.value })
-                    }
-                  />
-                ) : (
-                  userInfo.name
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td className="profile-label">Bio:</td>
-            </tr>
-            <tr>
-              <td className="profile-info">
-                {isEditing ? (
-                  <input
-                    type="text"
-                    value={userInfo.bio}
-                    onChange={(e) =>
-                      setUserInfo({ ...userInfo, bio: e.target.value })
-                    }
-                  />
-                ) : (
-                  userInfo.bio
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td className="profile-label">Height:</td>
-            </tr>
-            <tr>
-              <td className="profile-info">
-                {isEditing ? (
-                  <input
-                    type="text"
-                    value={userInfo.height}
-                    onChange={(e) =>
-                      setUserInfo({ ...userInfo, height: e.target.value })
-                    }
-                  />
-                ) : (
-                  userInfo.height
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td className="profile-label">Weight:</td>
-            </tr>
-            <tr>
-              <td className="profile-info">
-                {isEditing ? (
-                  <input
-                    type="text"
-                    value={userInfo.weight}
-                    onChange={(e) =>
-                      setUserInfo({ ...userInfo, weight: e.target.value })
-                    }
-                  />
-                ) : (
-                  userInfo.weight
-                )}
+              {userInfo.username}
               </td>
             </tr>
             <tr>
               <td colSpan="2" className="edit-button-container">
                 <button
                   className="edit-button"
-                  onClick={toggleEditing}
+                  onClick={handleLogout}
                   style={{
                     backgroundColor: '#424242', // Set the background color to #424242
                     color: '#CAFF5A',
@@ -133,7 +117,7 @@ function Profile() {
                     width: '100%', // Make the button as wide as the table
                   }}
                 >
-                  {isEditing ? 'Save' : 'Edit'}
+                  {'Log out'}
                 </button>
               </td>
             </tr>
